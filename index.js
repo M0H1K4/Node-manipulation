@@ -1,4 +1,3 @@
 const fs = require("fs");
 
-const hello = "hello world";
-console.log(hello);
+fs.readFileSync('./txt/input.txt')
