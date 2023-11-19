@@ -1,5 +1,6 @@
 const fs = require("fs");
 const http = require("http");
+const url = require("url");
 
 /////////////////////////////////////////////////////////////////
 /// FIles
@@ -34,9 +35,26 @@ const http = require("http");
 
 /// SERVER 😎
 
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const dataObj = JSON.parse(data);
+
 const server = http.createServer((req, res) => {
-  console.log(req);
-  res.end("Hello from MOHIKAN!");
+  const pathName = req.url;
+
+  if (pathName === "/" || pathName === "/overview") {
+    res.end("This is overviu simon");
+  } else if (pathName === "/product") {
+    res.end("Aqana produqtebia simon !!!");
+  } else if (pathName === "/api") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.end(data);
+  } else {
+    res.writeHead(404, {
+      "Content-type": "text/html",
+      "my-own-header": "Hello qurdebs",
+    });
+    res.end("<h1>Page not found!</h1>");
+  }
 });
 
 server.listen(8000, "127.0.0.1", () => {
