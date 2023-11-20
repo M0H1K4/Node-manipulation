@@ -29,7 +29,6 @@ const url = require("url");
 // console.log("will read file!");
 
 // fs.writeFile("./txt/luka.txt", "es aris axali faili", "utf-8", (err) => {
-//   console.log("luka gaaketa mamamisma )))))))");
 // });
 ////////////////////////////////////////////////////////////////
 
